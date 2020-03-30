@@ -174,3 +174,5 @@ celerybeat-schedule
 .vscode
 
 large-files-inline.txt
+
+*.pid
