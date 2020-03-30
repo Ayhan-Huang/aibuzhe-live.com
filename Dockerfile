@@ -19,6 +19,8 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY ./deploy/supervisord/supervisor.conf /etc/supervisor.conf
 COPY ./deploy/supervisord/app.conf /etc/supervisor/conf.d/
 
+# docker渐进式构建，会充分利用缓存，它会从变动的那层及以下重新构建。因此将经常变动的部分往下放，可以加快构建速度。
+# 代码部分经常变动，和requirements.txt分开，避免每次都需要重新安装依赖
 COPY . /code/
 
 EXPOSE 8000

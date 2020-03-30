@@ -4,7 +4,10 @@ services:
   api:
     build: .
     volumes:
+      # 数据持久化：挂载主机目录到容器目录
+      # 对于django，还能调试模式下自动重启的特性（通过manage.py启动），方便开发，避免重启容器
       - .:/code
       - /var/log/supervisor:/log/supervisor/
     ports:
+      # 暴露容器的8000端口给主机的8000端口
       - "8000:8000"
